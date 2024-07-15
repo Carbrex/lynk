@@ -18,11 +18,11 @@ function ShowUrl({
 }: ExtendedEditUrlProps) {
   const [withPassword, setWithPassword] = useState(false);
   const [shortenUrl, setShortenUrl] = useState(
-    window.location.origin + "/" + urlData.shortUrl,
+    window.location.origin + "/" + urlData?.shortUrl,
   );
 
   useEffect(() => {
-    if (urlData.password) {
+    if (urlData?.password) {
       const remaining = `?password=${urlData.password}`;
       if (withPassword) {
         setShortenUrl((prev) => prev + remaining);
@@ -32,7 +32,7 @@ function ShowUrl({
     }
   }, [withPassword]);
 
-  if (!urlData) return null;
+  if (!urlData) return <></>;
   return (
     <>
       <div

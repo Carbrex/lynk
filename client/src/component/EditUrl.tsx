@@ -26,7 +26,7 @@ function EditUrl({
     e.preventDefault();
     if (alreadyShortening) return;
     setAlreadyShortening(true);
-    console.log(shortenUrlData);
+
     if (shortenUrlData.hasPassword && !shortenUrlData.password) {
       toast.error("Please enter a password or disable password protection");
       setAlreadyShortening(false);
@@ -66,6 +66,8 @@ function EditUrl({
       setAlreadyShortening(false);
     }
   };
+
+  if (!urlData) return <></>;
 
   return (
     <>
@@ -199,7 +201,7 @@ function EditUrl({
                         min={new Date().toISOString().split("T")[0]}
                         max={
                           new Date(
-                            new Date().getTime() + 1000 * 60 * 60 * 24 * 365,
+                            new Date().getTime() + 1000 * 60 * 60 * 24 * 365
                           )
                             .toISOString()
                             .split("T")[0]
